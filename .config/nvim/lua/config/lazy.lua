@@ -26,12 +26,10 @@ require("lazy").setup({
 	spec = {
 		-- import plugins
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-
-    { import = "lazyvim.plugins.extras.lang.clangd" },
+		{ import = "lazyvim.plugins.extras.lang.clangd" },
 		{ import = "lazyvim.plugins.extras.lang.rust" },
 		{ import = "lazyvim.plugins.extras.lang.python" },
 		{ import = "lazyvim.plugins.extras.dap.core" },
-		{ "folke/tokyonight.nvim" },
 		-- Import local custom plugins from lua/plugins/*.lua
 		{ import = "plugins" },
 	},
@@ -41,6 +39,3 @@ require("lazy").setup({
 	-- automatically check for plugin updates
 	checker = { enabled = true },
 })
-
--- Apply colorscheme if available
-pcall(vim.cmd, "colorscheme tokyonight")
