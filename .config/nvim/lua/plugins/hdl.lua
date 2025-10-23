@@ -28,10 +28,10 @@ return {
 		opts = function(_, opts)
 			opts.ensure_installed = opts.ensure_installed or {}
 			local tools = {
-				-- HDL LSPs
+				-- HDL tools & LSPs
 				"svls", -- SystemVerilog/Verilog LSP (cargo install svls)
-        "hdl-checker",
-        "rust_hdl",
+				"rust_hdl",
+				"vhdl-style-guide",
 			}
 			for _, tool in ipairs(tools) do
 				local exists = false
