@@ -36,7 +36,7 @@ return {
 	-- Render Markdown inline
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = { "markdown", "quarto", "rmd" },
+		ft = { "markdown", "markdown.mdx", "quarto", "rmd" },
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-mini/mini.icons",
@@ -52,14 +52,21 @@ return {
 			require("render-markdown").setup(opts)
 		end,
 		init = function()
-			vim.api.nvim_create_autocmd("FileType", {
-				pattern = { "markdown", "quarto", "rmd" },
-				callback = function()
+			local patterns = { "markdown", "markdown.mdx", "quarto", "rmd" }
+			local function try_enable()
+				pcall(function()
+					require("lazy").load({ plugins = { "render-markdown.nvim" } })
+				end)
+				vim.schedule(function()
 					local ok, rm = pcall(require, "render-markdown")
 					if ok and rm and rm.enable then
 						pcall(rm.enable)
 					end
-				end,
+				end)
+			end
+			vim.api.nvim_create_autocmd({ "FileType", "BufEnter", "BufWinEnter" }, {
+				pattern = patterns,
+				callback = try_enable,
 			})
 		end,
 	},
