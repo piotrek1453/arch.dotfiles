@@ -8,7 +8,7 @@ return {
 				render_modes = { "n", "c" },
 				heading = { enabled = true },
 				code = { enabled = true, style = "full" },
-				latex = { enabled = false },
+				latex = { enabled = true },
 				bullet = { enabled = true },
 				checkbox = { enabled = true },
 				quote = { enabled = true },

@@ -13,8 +13,8 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.copyindent = true      -- copy indent structure from previous line
-vim.opt.preserveindent = true  -- preserve as much indent structure as possible
+vim.opt.copyindent = true -- copy indent structure from previous line
+vim.opt.preserveindent = true -- preserve as much indent structure as possible
 vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.wrap = false
@@ -28,9 +28,9 @@ vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.opt.spell = false
 local nospell_grp = vim.api.nvim_create_augroup("NoSpellAll", { clear = true })
 vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter", "BufEnter", "InsertEnter" }, {
-  group = nospell_grp,
-  pattern = "*",
-  callback = function()
-    vim.opt_local.spell = false
-  end,
+	group = nospell_grp,
+	pattern = "*",
+	callback = function()
+		vim.opt_local.spell = false
+	end,
 })

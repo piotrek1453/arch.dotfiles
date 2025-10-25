@@ -3,9 +3,7 @@ return {
 		"mason-org/mason.nvim",
 		opts = {
 			ensure_installed = {
-				"luacheck",
-				"stylua",
-				"lua-language-server",
+				"json-lsp",
 			},
 		},
 	},
@@ -13,7 +11,7 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				lua_language_server = { opts = {} },
+				jsonls = { opts = {} },
 			},
 		},
 	},

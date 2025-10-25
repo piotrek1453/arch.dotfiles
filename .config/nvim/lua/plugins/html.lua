@@ -1,23 +1,20 @@
 return {
-	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			ensure_installed = { "css", "scss" },
-		},
-	},
+	-- Install emmet-language-server via Mason
 	{
 		"mason-org/mason.nvim",
 		opts = {
 			ensure_installed = {
-				"tailwindcss-language-server",
+				"emmet-language-server",
 			},
 		},
 	},
+
+	-- Configure emmet-language-server
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				tailwindcss = {
+				emmet_language_server = {
 					filetypes = {
 						"html",
 						"css",
@@ -28,11 +25,16 @@ return {
 						"typescriptreact",
 						"rust",
 					},
-					settings = {
-						tailwindCSS = { includeLanguages = { rust = "html" } },
-					},
 				},
 			},
+		},
+	},
+
+	-- Ensure HTML treesitter is installed
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = {
+			ensure_installed = { "html" },
 		},
 	},
 }
