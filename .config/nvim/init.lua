@@ -1,7 +1,10 @@
 -- Set leaders
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
+-- keymaps
+vim.keymap.set("n", "<leader>w", ":w<CR>")
+vim.keymap.set("n", "<leader>q", ":q<CR>")
+--
 -- All lazy.nvim setup is in lua/config/lazy.lua
 require("config.lazy")
 
@@ -19,10 +22,6 @@ vim.opt.termguicolors = true
 vim.opt.cursorline = true
 vim.opt.wrap = false
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-
--- keymaps
-vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
 
 -- Force spell off globally and keep overriding late
 vim.opt.spell = false
