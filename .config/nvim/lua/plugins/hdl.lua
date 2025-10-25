@@ -15,24 +15,24 @@ return {
 	{
 		"mason-org/mason.nvim",
 		opts = {
-			-- HDL tools & LSPs
-			"svls", -- SystemVerilog/Verilog LSP (cargo install svls)
-			"rust_hdl",
-			"vhdl-style-guide",
+			ensure_installed = {
+				"svls",
+				"rust_hdl",
+			},
 		},
-		{
-			"neovim/nvim-lspconfig",
-			opts = {
-				servers = {
-					-- SystemVerilog/Verilog
-					svls = {
-						filetypes = { "verilog", "systemverilog", "sv", "svh" },
-					},
-					-- VHDL
-					vhdl_ls = {
-						-- defaults are OK
-					},
+	},
+
+	-- Configure LSP servers
+	{
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				-- SystemVerilog/Verilog
+				svls = {
+					filetypes = { "verilog", "systemverilog", "sv", "svh" },
 				},
+				-- VHDL
+				vhdl_ls = {},
 			},
 		},
 	},

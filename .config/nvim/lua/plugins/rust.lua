@@ -8,22 +8,28 @@ return {
 			},
 		},
 	},
+	-- Configure rust-analyzer for Leptos/RSX
 	{
-		vim.lsp.config("rust_analyzer", {
-			settings = {
-				["rust-analyzer"] = {
-					cargo = { features = "all" },
-					procMacro = {
-						ignored = {
-							leptos_macro = {
-								-- optional: --
-								-- "component",
-								"server",
+		"neovim/nvim-lspconfig",
+		opts = {
+			servers = {
+				rust_analyzer = {
+					settings = {
+						["rust-analyzer"] = {
+							-- Other Settings ...
+							procMacro = {
+								ignored = {
+									leptos_macro = {
+										-- optional: --
+										-- "component",
+										"server",
+									},
+								},
 							},
 						},
 					},
 				},
 			},
-		}),
+		},
 	},
 }
