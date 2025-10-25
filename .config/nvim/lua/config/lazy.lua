@@ -45,8 +45,10 @@ require("lazy").setup({
 		{ import = "lazyvim.plugins.extras.lsp.neoconf" },
 		-- utils
 		{ import = "lazyvim.plugins.extras.util.dot" },
+		{ import = "lazyvim.plugins.util" },
 		-- debuggers
 		{ import = "lazyvim.plugins.extras.dap.core" },
+		-- ai
 
 		-- Import local custom plugins from lua/plugins/*.lua
 		{ import = "plugins" },

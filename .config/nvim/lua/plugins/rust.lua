@@ -8,4 +8,22 @@ return {
 			},
 		},
 	},
+	{
+		vim.lsp.config("rust_analyzer", {
+			settings = {
+				["rust-analyzer"] = {
+					cargo = { features = "all" },
+					procMacro = {
+						ignored = {
+							leptos_macro = {
+								-- optional: --
+								-- "component",
+								"server",
+							},
+						},
+					},
+				},
+			},
+		}),
+	},
 }
