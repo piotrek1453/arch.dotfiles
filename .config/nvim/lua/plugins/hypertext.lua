@@ -23,18 +23,12 @@ return {
 					},
 				},
 				tailwindcss = {
-					filetypes = {
-						"html",
-						"css",
-						"rust",
-						"javascript",
-						"javascriptreact",
-						"typescript",
-						"typescriptreact",
-					},
-					init_options = {
-						userLanguages = {
-							rust = "html",
+					filetypes_include = { "rust" },
+					settings = {
+						tailwindCSS = {
+							includeLanguages = {
+								rust = "html",
+							},
 						},
 					},
 				},
