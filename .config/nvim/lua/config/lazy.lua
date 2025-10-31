@@ -20,31 +20,6 @@ require("lazy").setup({
 	spec = {
 		-- import plugins
 		{ "LazyVim/LazyVim", import = "lazyvim.plugins" },
-		-- languages
-		{ import = "lazyvim.plugins.extras.lang.cmake" },
-		{ import = "lazyvim.plugins.extras.lang.clangd" },
-		{ import = "lazyvim.plugins.extras.lang.rust" },
-		{ import = "lazyvim.plugins.extras.lang.toml" },
-		{ import = "lazyvim.plugins.extras.lang.python" },
-		{ import = "lazyvim.plugins.extras.lang.sql" },
-		{ import = "lazyvim.plugins.extras.lang.tailwind" },
-		{ import = "lazyvim.plugins.extras.lang.tex" },
-		{ import = "lazyvim.plugins.extras.lang.json" },
-		{ import = "lazyvim.plugins.extras.lang.yaml" },
-		{ import = "lazyvim.plugins.extras.lang.markdown" },
-		{ import = "lazyvim.plugins.extras.lang.docker" },
-		-- formatters
-		{ import = "lazyvim.plugins.extras.formatting.black" },
-		-- lsp
-		{ import = "lazyvim.plugins.extras.lsp.neoconf" },
-		-- utils
-		{ import = "lazyvim.plugins.extras.util.dot" },
-		{ import = "lazyvim.plugins.util" },
-		-- debuggers
-		{ import = "lazyvim.plugins.extras.dap.core" },
-		-- ai
-		{ import = "lazyvim.plugins.extras.ai.copilot-chat" },
-
 		-- Import local custom plugins from lua/plugins/*.lua
 		{ import = "plugins" },
 	},
