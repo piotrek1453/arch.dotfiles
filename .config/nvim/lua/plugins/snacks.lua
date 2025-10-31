@@ -8,6 +8,9 @@ return {
 				max_width = 80,
 				max_height = 40,
 				inline = true,
+				math = {
+					format = "svg",
+				},
 				markdown = {
 					enabled = true,
 					filetypes = { "markdown", "rmarkdown", "quarto" },
