@@ -1,5 +1,9 @@
 require("config.lazy")
 
+-- set theme
+vim.opt.background = "dark"
+vim.cmd("colorscheme oxocarbon")
+
 -- Force spell off globally and keep overriding late
 vim.opt.spell = false
 local nospell_grp = vim.api.nvim_create_augroup("NoSpellAll", { clear = true })

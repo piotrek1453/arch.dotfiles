@@ -1,8 +1,3 @@
 return {
-	{
-		"LazyVim/LazyVim",
-		opts = {
-			colorscheme = "tokyonight-night",
-		},
-	},
+	"nyoom-engineering/oxocarbon.nvim",
 }
