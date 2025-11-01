@@ -1,31 +1,18 @@
 return {
+	-- add CSS support for treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = { "css", "scss" },
 		},
 	},
-	{
-		"mason-org/mason.nvim",
-		opts = {
-			ensure_installed = {
-				"tailwindcss-language-server",
-			},
-		},
-	},
+	-- override Lazy's config for Tailwind to work in Rust
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
 				tailwindcss = {
 					filetypes = {
-						"html",
-						"css",
-						"scss",
-						"javascript",
-						"typescript",
-						"javascriptreact",
-						"typescriptreact",
 						"rust",
 					},
 					settings = {

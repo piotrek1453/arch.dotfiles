@@ -1,8 +1,9 @@
 return {
+	-- Full override of render-markdown settings from LazyVim spec
+	-- I don't like the way LazyVim sets up appearance of render
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		opts = function()
-			-- Full override of render-markdown settings from LazyVim spec
 			return {
 				enabled = true,
 				render_modes = { "n", "c" },

@@ -2,6 +2,7 @@ return {
 	{
 		"folke/snacks.nvim",
 		opts = {
+			-- enable image preview in md formats
 			image = {
 				enabled = true,
 				backend = "kitty",
@@ -16,6 +17,7 @@ return {
 					filetypes = { "markdown", "rmarkdown", "quarto" },
 				},
 			},
+
 			picker = {
 				-- show hidden files in explorer by default
 				hidden = true,

@@ -1,4 +1,5 @@
 return {
+	-- enable ghost text for autocompletions
 	{
 		"hrsh7th/nvim-cmp",
 		opts = {
@@ -7,9 +8,9 @@ return {
 			},
 		},
 	},
+	-- disable plaintext autocompletion source in all files
 	{
 		"saghen/blink.cmp",
-		-- disable plaintext source
 		opts = function(_, opts)
 			local sources = opts.sources or {}
 			local default_sources = sources.default or {}

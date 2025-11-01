@@ -1,14 +1,13 @@
 return {
+	-- add TeX completions for math symbols etc
 	{
 		"saghen/blink.cmp",
 		dependencies = {
 			"erooke/blink-cmp-latex",
 		},
-
 		opts = {
 			sources = {
 				default = { "latex" },
-
 				providers = {
 					latex = {
 						name = "Latex",
