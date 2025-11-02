@@ -1,6 +1,5 @@
 -- HDL (Verilog/SystemVerilog/VHDL) support
 return {
-	-- Ensure Treesitter grammars for HDL
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
@@ -10,29 +9,68 @@ return {
 			},
 		},
 	},
-
-	-- Install HDL language servers via mason
 	{
-		"mason-org/mason.nvim",
+		"mason.nvim",
 		opts = {
 			ensure_installed = {
-				"svls",
-				"rust_hdl",
+				"svls", -- additional SV LSP
+				"rust_hdl", -- VHDL LSP
+				"verible", -- Verilog/SystemVerilog formatter
+				-- -- this one seems broken whether installed by Mason or manually
+				-- "hdl-checker", -- universal
+				"vsg", -- VHDL Style Guide formatter+linter
 			},
 		},
 	},
 
-	-- Configure LSP servers
+	-- LSP
 	{
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
-				-- SystemVerilog/Verilog
+				-- SystemVerilog / Verilog
 				svls = {
 					filetypes = { "verilog", "systemverilog", "sv", "svh" },
 				},
 				-- VHDL
 				vhdl_ls = {},
+			},
+		},
+	},
+	--linting
+	{
+		"mfusenegger/nvim-lint",
+		opts = {
+			linters_by_ft = {
+				vhd = { "vsg" },
+				vhdl = { "vsg" },
+			},
+		},
+	},
+	-- formatters
+	{
+		"stevearc/conform.nvim",
+		opts = {
+			formatters = {
+				vsg = {
+					append_args = { "--fix" },
+				},
+				verible = {
+					append_args = {
+						"--column_limit",
+						"80",
+					},
+				},
+			},
+			formatters_by_ft = {
+				-- SystemVerilog / Verilog
+				verilog = { "verible" },
+				systemverilog = { "verible" },
+				sv = { "verible" },
+				svh = { "verible" },
+				-- vhdl
+				vhdl = { "vsg" },
+				vhd = { "vsg" },
 			},
 		},
 	},
