@@ -39,7 +39,7 @@ return {
 	},
 	--linting
 	{
-		"mfusenegger/nvim-lint",
+		"mfussenegger/nvim-lint",
 		opts = {
 			linters_by_ft = {
 				vhd = { "vsg" },
