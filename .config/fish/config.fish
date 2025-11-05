@@ -3,10 +3,8 @@ if status is-interactive
 end
 set fish_greeting
 
-
 # Created by `pipx` on 2025-03-21 19:39:15
 set PATH $PATH /home/$USER/.local/bin
-
 
 # User paths
 fish_add_path /opt/gowin-eda-ide/bin
@@ -17,3 +15,4 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+

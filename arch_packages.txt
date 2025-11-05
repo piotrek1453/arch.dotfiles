@@ -1,0 +1,8 @@
+imagemagick
+powerline
+powerline-fonts
+fish
+prettier
+neovim
+xclip
+markdownlint-cli2
