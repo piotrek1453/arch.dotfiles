@@ -8,6 +8,9 @@ fish_variables
 # Fisher cache
 .config/fish/completions/fisher.fish
 .config/fish/functions/fisher.fish
+# conflicting files on tide install
+.config/fish/functions/fish_mode_prompt.fish
+.config/fish/functions/fish_prompt.fish
 
 # nvim
 lazy-lock.json

@@ -8,11 +8,7 @@ set PATH $PATH /home/$USER/.local/bin
 
 # User paths
 fish_add_path /opt/gowin-eda-ide/bin
-
-# User venv - workaround for global litex install
-if test -f $HOME/.venv/bin/activate.fish
-    . "$HOME/.venv/bin/activate.fish"
-end
+fish_add_path $HOME/.scripts
 
 # Aliases
 alias yay=paru
