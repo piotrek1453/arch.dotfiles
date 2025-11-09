@@ -1,8 +1,13 @@
+# nvim + stuff for it to work as configured
 imagemagick
 powerline
-powerline-fonts
 fish
 prettier
 neovim
 xclip
+kitty
+## linters
 markdownlint-cli2
+# fonts
+powerline-fonts
+nerd-fonts
