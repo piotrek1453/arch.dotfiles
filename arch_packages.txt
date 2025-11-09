@@ -1,9 +1,10 @@
 # nvim + stuff for it to work as configured
+neovim
 imagemagick
 powerline
 fish
 prettier
-neovim
+fd
 xclip
 kitty
 ## linters

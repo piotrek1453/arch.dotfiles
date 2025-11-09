@@ -14,9 +14,5 @@ fish_add_path $HOME/.scripts
 alias yay=paru
 alias pacman=sudo pacman
 
-# pnpm
-set -gx PNPM_HOME "/home/$USER/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
+# display full path in prompt
+set -U fish_prompt_pwd_dir_length 0
