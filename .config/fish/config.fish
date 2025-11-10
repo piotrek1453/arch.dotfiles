@@ -7,7 +7,9 @@ set fish_greeting
 set PATH $PATH /home/$USER/.local/bin
 
 # User paths
-fish_add_path /opt/gowin-eda-ide/bin
+# for IDE installed from AUR, doesn't work for now so import from manually installed one is needed as below
+# fish_add_path /opt/gowin-eda-ide/bin 
+fish_add_path $HOME/Tools/Gowin/IDE/bin
 fish_add_path $HOME/.scripts
 
 # Aliases
