@@ -14,3 +14,6 @@ fish_variables
 
 # nvim
 lazy-lock.json
+
+# TeX
+texmf/ls-R

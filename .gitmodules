@@ -1,0 +1,3 @@
+[submodule "texmf/tex/latex/TeX-templates"]
+	path = texmf/tex/latex/TeX-templates
+	url = https://github.com/sjijon/TeX-templates.git
