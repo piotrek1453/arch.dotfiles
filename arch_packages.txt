@@ -9,6 +9,10 @@ xclip
 kitty
 ## linters
 markdownlint-cli2
+## latex/pdf
+xdotool
+zathura
+zathura-pdf-mupdf 
 # fonts
 powerline-fonts
 nerd-fonts
