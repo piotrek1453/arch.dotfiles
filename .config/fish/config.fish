@@ -28,3 +28,7 @@ alias pacman=sudo pacman
 
 # display full path in prompt
 set -U fish_prompt_pwd_dir_length 0
+
+# >>> coursier install directory >>>
+set -gx PATH "$PATH:/home/juchap/.local/share/coursier/bin"
+# <<< coursier install directory <<<
