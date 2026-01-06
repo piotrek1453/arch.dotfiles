@@ -5,6 +5,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"verilog",
+				"systemverilog",
 				"vhdl",
 			},
 		},
@@ -14,11 +15,11 @@ return {
 		opts = {
 			ensure_installed = {
 				"svls", -- additional SV LSP
-				"rust_hdl", -- VHDL LSP
-				"verible", -- Verilog/SystemVerilog formatter
+				"verible", -- Verilog/SystemVerilog formatter and LSP
 				-- -- this one seems broken whether installed by Mason or manually
 				-- "hdl-checker", -- universal
 				"vsg", -- VHDL Style Guide formatter+linter
+				"rust_hdl", -- VHDL LSP
 			},
 		},
 	},
@@ -29,6 +30,18 @@ return {
 		opts = {
 			servers = {
 				-- SystemVerilog / Verilog
+				verible = {
+					filetypes = {
+						"verilog",
+						"systemverilog",
+						"sv",
+						"svh",
+					},
+					cmd = {
+						"verible-verilog-ls",
+						"--rules_config_search",
+					},
+				},
 				svls = {
 					filetypes = { "verilog", "systemverilog", "sv", "svh" },
 				},
@@ -37,7 +50,7 @@ return {
 			},
 		},
 	},
-	--linting
+	-- linting
 	{
 		"mfussenegger/nvim-lint",
 		opts = {
@@ -58,7 +71,7 @@ return {
 				verible = {
 					append_args = {
 						"--column_limit",
-						"80",
+						"79",
 					},
 				},
 			},
