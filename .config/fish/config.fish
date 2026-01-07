@@ -30,5 +30,9 @@ alias pacman=sudo pacman
 set -U fish_prompt_pwd_dir_length 0
 
 # >>> coursier install directory >>>
-set -gx PATH "$PATH:/home/juchap/.local/share/coursier/bin"
+set -gx PATH "$PATH:$HOME/.local/share/coursier/bin"
 # <<< coursier install directory <<<
+
+# >>> rust binaries >>>
+set -gx PATH "$PATH:$HOME/.cargo/bin"
+# <<< rust binaries <<<

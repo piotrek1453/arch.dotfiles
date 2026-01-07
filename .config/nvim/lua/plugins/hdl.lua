@@ -14,10 +14,7 @@ return {
 		"mason.nvim",
 		opts = {
 			ensure_installed = {
-				"svls", -- additional SV LSP
-				"verible", -- Verilog/SystemVerilog formatter and LSP
-				-- -- this one seems broken whether installed by Mason or manually
-				-- "hdl-checker", -- universal
+				"verible", -- SystemVerilog LSP + formatter
 				"vsg", -- VHDL Style Guide formatter+linter
 				"rust_hdl", -- VHDL LSP
 			},
@@ -42,9 +39,6 @@ return {
 						"--rules_config_search",
 					},
 				},
-				svls = {
-					filetypes = { "verilog", "systemverilog", "sv", "svh" },
-				},
 				-- VHDL
 				vhdl_ls = {},
 			},
@@ -65,26 +59,23 @@ return {
 		"stevearc/conform.nvim",
 		opts = {
 			formatters = {
-				vsg = {
-					append_args = { "--fix" },
-				},
+				-- SystemVerilog / Verilog
 				verible = {
 					append_args = {
 						"--column_limit",
 						"79",
 					},
 				},
+				-- VHDL
+				vsg = {
+					append_args = { "--fix" },
+				},
 			},
-			formatters_by_ft = {
-				-- SystemVerilog / Verilog
-				verilog = { "verible" },
-				systemverilog = { "verible" },
-				sv = { "verible" },
-				svh = { "verible" },
-				-- vhdl
-				vhdl = { "vsg" },
-				vhd = { "vsg" },
-			},
+		},
+		formatters_by_ft = {
+			-- VHDL
+			vhdl = { "vsg" },
+			vhd = { "vsg" },
 		},
 	},
 }
