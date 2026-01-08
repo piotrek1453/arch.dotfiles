@@ -49,8 +49,15 @@ return {
 		"mfussenegger/nvim-lint",
 		opts = {
 			linters_by_ft = {
+				-- SystemVerilog / Verilog
+				systemverilog = { "verilator" },
+				verilog = { "verilator" },
+				-- VHDL
 				vhd = { "vsg" },
 				vhdl = { "vsg" },
+			},
+			verilator = {
+				append_args = { "-sv", "-Wall", "--bbox-sys", "--bbox-unsup", "--lint-only", "-f" },
 			},
 		},
 	},
