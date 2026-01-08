@@ -1,9 +1,16 @@
 if status is-interactive
     # Commands to run in interactive sessions can go here
 end
+
+# disable greeting
 set fish_greeting
 
+# Aliases
+alias yay=paru
+alias pacman=sudo pacman
+
 # User paths
+## Gowin IDE
 ## for IDE installed from AUR, doesn't work for now so import from manually installed one is needed as below
 ## fish_add_path /opt/gowin-eda-ide/bin 
 if test -d $HOME/Tools/Gowin/IDE/bin
@@ -14,17 +21,11 @@ fish_add_path $HOME/.scripts
 ## Xilinx tools
 ### Xilinx base path
 set xilinx_root $HOME/Tools/Xilinx
-### Choose path to latest version
-if test -d xilinx_root
-    set latest_version (ls $xilinx_root | grep -E '^[0-9]+\.[0-9]+' | sort -V | tail -n 1)
-    fish_add_path $xilinx_root/$latest_version/Vitis/bin
-    fish_add_path $xilinx_root/$latest_version/Vivado/bin
-end
-fish_add_path /home/$USER/.local/bin
+fish_add_path $xilinx_root/2025.2/Vitis/bin
+fish_add_path $xilinx_root/2025.2/Vivado/bin
 
-# Aliases
-alias yay=paru
-alias pacman=sudo pacman
+# local bin dir
+fish_add_path /home/$USER/.local/bin
 
 # display full path in prompt
 set -U fish_prompt_pwd_dir_length 0
