@@ -15,4 +15,4 @@ zathura
 zathura-pdf-mupdf 
 # fonts
 powerline-fonts
-nerd-fonts
+ttf-jetbrains-mono-nerd
