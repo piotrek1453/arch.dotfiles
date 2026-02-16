@@ -16,3 +16,5 @@ zathura-pdf-mupdf
 # fonts
 powerline-fonts
 ttf-jetbrains-mono-nerd
+# other stuff
+mpv
