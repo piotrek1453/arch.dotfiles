@@ -18,3 +18,4 @@ powerline-fonts
 ttf-jetbrains-mono-nerd
 # other stuff
 mpv
+sndio
