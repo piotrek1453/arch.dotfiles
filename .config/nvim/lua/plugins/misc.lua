@@ -27,4 +27,10 @@ return {
 		"nvim-telescope/telescope.nvim",
 		lazy = true,
 	},
+	{
+		"echasnovski/mini.ai",
+		opts = {
+			search_method = "cover_or_nearest",
+		},
+	},
 }
