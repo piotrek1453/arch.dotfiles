@@ -54,6 +54,7 @@ user_pref("network.cookie.lifetimePolicy", 0);
 // disable speech dispatcher
 user_pref("media.webspeech.synth.enabled", false);
 
+// use OS theme
+user_pref("ui.systemUsesDarkTheme", 2);
 // prefer dark mode everywhere
-user_pref("ui.systemUsesDarkTheme", 0);
 user_pref("layout.css.prefers-color-scheme.content-override", "dark");
