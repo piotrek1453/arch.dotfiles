@@ -20,3 +20,4 @@ ttf-jetbrains-mono-nerd
 mpv
 sndio
 rsync
+firewalld
