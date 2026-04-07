@@ -1,5 +1,9 @@
-prefs.js
-places.sqlite
-storage/
-cache2/
-startupCache/
+# ignore everything
+*
+
+# except
+!update-arkenfox.sh
+!user.js
+!user-overrides.js
+!arkenfox-upstream/
+!arkenfox-upstream/**
