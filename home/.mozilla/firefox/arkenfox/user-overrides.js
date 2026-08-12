@@ -58,3 +58,6 @@ user_pref("media.webspeech.synth.enabled", false);
 user_pref("ui.systemUsesDarkTheme", 2);
 // prefer dark mode everywhere
 user_pref("layout.css.prefers-color-scheme.content-override", "dark");
+
+// disable Firefox password manager
+user_pref("signon.rememberSignons", false);

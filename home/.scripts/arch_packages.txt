@@ -107,3 +107,4 @@ reflector
 
 # misc
 less
+keepassxc

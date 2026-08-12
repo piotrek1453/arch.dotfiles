@@ -98,3 +98,4 @@ wireshark-qt
 
 # misc
 less
+keepassxc
