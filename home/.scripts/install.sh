@@ -65,7 +65,7 @@ void)
 esac
 
 # create symlinks
-stow -d "$REPO_ROOT/home" -t "$HOME" --adopt .
+stow -d "$REPO_ROOT/home" -t "$HOME" --no-folding .
 
 # install fisher and tide theme
 curl -sL https://git.io/fisher | fish -c "source; fisher install jorgebucaran/fisher; fisher install IlanCosman/tide@v6"
