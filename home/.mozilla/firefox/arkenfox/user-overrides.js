@@ -21,7 +21,7 @@ user_pref("network.cookie.lifetimePolicy", 0);
 // don't remove cookies on shutdown
 user_pref("privacy.clearOnShutdown.cookies", false);
 user_pref("privacy.clearOnShutdown_v2.cookies", false);
-user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false)
+user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false);
 
 // don't close browser with last tab closed
 user_pref("browser.tabs.closeWindowWithLastTab", false);
