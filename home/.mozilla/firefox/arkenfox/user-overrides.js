@@ -1,4 +1,5 @@
 /* override recipe: enable session restore ***/
+
 user_pref("browser.startup.page", 3); // 0102
 // user_pref("browser.privatebrowsing.autostart", false); // 0110 required if you had it set as true
 // user_pref("browser.sessionstore.privacy_level", 0); // 1003 optional to restore cookies/formdata
@@ -12,6 +13,15 @@ user_pref("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads", false); // 2
 // optional to match when you use Ctrl-Shift-Del (settings>History>Custom Settings>Clear History)
 // user_pref("privacy.clearHistory.historyFormDataAndDownloads", false); // 2830 FF128-135
 // user_pref("privacy.clearHistory.browsingHistoryAndDownloads", false); // 2831 FF136+
+
+// accept only necessary cookies
+user_pref("network.cookie.cookieBehavior", 1);
+user_pref("network.cookie.lifetimePolicy", 0);
+
+// don't remove cookies on shutdown
+user_pref("privacy.clearOnShutdown.cookies", false);
+user_pref("privacy.clearOnShutdown_v2.cookies", false);
+user_pref("privacy.clearOnShutdown_v2.cookiesAndStorage", false)
 
 // don't close browser with last tab closed
 user_pref("browser.tabs.closeWindowWithLastTab", false);
@@ -46,10 +56,6 @@ user_pref("sidebar.notification.badge.aichat", false);
 
 // enable tab grouping
 user_pref("browser.tabs.groups.enabled", true);
-
-// accept only necessary cookies
-user_pref("network.cookie.cookieBehavior", 1);
-user_pref("network.cookie.lifetimePolicy", 0);
 
 // disable speech dispatcher
 user_pref("media.webspeech.synth.enabled", false);
