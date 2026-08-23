@@ -15,4 +15,5 @@ MAKEPKG_CONFIG="$REPO_ROOT/system/etc/makepkg.conf"
 info 'Installing system configuration into /etc.'
 sudo install -Dm644 "$PACMAN_CONFIG" /etc/pacman.conf
 sudo install -Dm644 "$MAKEPKG_CONFIG" /etc/makepkg.conf
+sudo pacman -Sy --noconfirm
 info 'System configuration installed.'
