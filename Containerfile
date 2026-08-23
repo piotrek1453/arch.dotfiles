@@ -31,6 +31,7 @@ COPY --chown=${USERNAME}:${USERNAME} . /workspace
 USER ${USERNAME}
 
 RUN git config --global --add safe.directory /workspace \
+    && rm -f "/home/${USERNAME}/.bashrc" "/home/${USERNAME}/.bash_profile" "/home/${USERNAME}/.bash_logout" \
     && PACMAN_DISABLE_SANDBOX=1 make -C home/.scripts/installation system-config \
     && make -C home/.scripts/installation all \
     && pre-commit run --all-files
