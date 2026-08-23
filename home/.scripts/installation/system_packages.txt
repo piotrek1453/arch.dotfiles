@@ -19,6 +19,9 @@ aardvark-dns
 podman-docker
 ## linters/formatters
 ruff
+shfmt
+stylua
+taplo-cli
 ## languages/compilers
 rustup
 python
@@ -71,6 +74,7 @@ libreoffice-still
 libreoffice-still-pl
 
 # other stuff
+pre-commit
 stow
 htop
 mpv

@@ -1,0 +1,28 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+  - repo: local
+    hooks:
+      - id: prettier
+        name: prettier
+        entry: prettier --write --ignore-unknown
+        language: system
+        types: [yaml, json, markdown]
+      - id: shfmt
+        name: shfmt
+        entry: shfmt --write
+        language: system
+        types: [shell]
+      - id: stylua
+        name: stylua
+        entry: stylua
+        language: system
+        types: [lua]
+      - id: taplo
+        name: taplo
+        entry: taplo fmt
+        language: system
+        types: [toml]

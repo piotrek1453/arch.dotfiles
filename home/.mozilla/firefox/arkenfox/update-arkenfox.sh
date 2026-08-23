@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
-# IMPORTANT: run in actual FF profile dir, not in repo
+
+set -Eeuo pipefail
+
+SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}")"
+SOURCE_DIR="$(git -C "$(dirname "$SCRIPT_PATH")" rev-parse --show-toplevel)/home/.mozilla/firefox/arkenfox"
+UPSTREAM_DIR="$SOURCE_DIR/arkenfox-upstream"
+PROFILE_DIR="${FIREFOX_PROFILE_DIR:-$HOME/.mozilla/firefox/arkenfox}"
 
 # update repo
-cd arkenfox-upstream || exit
-git pull origin master
+git -C "$UPSTREAM_DIR" pull origin master
 echo "Updating arkenfox repo"
-cd .. || exit
 
 # copy scripts
 # rsync because cp doesn't handle repo symlink well
-rsync -avL arkenfox-upstream/updater.sh .
-rsync -avL arkenfox-upstream/prefsCleaner.sh .
-rsync -avL arkenfox-upstream/user.js .
+rsync -avL "$UPSTREAM_DIR/updater.sh" "$PROFILE_DIR/"
+rsync -avL "$UPSTREAM_DIR/prefsCleaner.sh" "$PROFILE_DIR/"
+rsync -avL "$UPSTREAM_DIR/user.js" "$PROFILE_DIR/"
 
 # run scripts
+cd "$PROFILE_DIR"
 ./updater.sh
 ./prefsCleaner.sh
 echo "Arkenfox updated"

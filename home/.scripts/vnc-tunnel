@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+set -Eeuo pipefail
+
+SSH_USER="${VNC_SSH_USER:-piotr}"
+SSH_HOST="${VNC_SSH_HOST:-192.168.100.100}"
+LOCAL_PORT="${VNC_LOCAL_PORT:-5900}"
+REMOTE_PORT="${VNC_REMOTE_PORT:-5900}"
+SSH_PID=''
+
+usage() {
+	cat <<EOF
+Usage: $(basename "$0") [user] [host] [local-port] [remote-port]
+
+Defaults:
+  user:        $SSH_USER
+  host:        $SSH_HOST
+  local-port:  $LOCAL_PORT
+  remote-port: $REMOTE_PORT
+
+Environment overrides:
+  VNC_SSH_USER, VNC_SSH_HOST, VNC_LOCAL_PORT, VNC_REMOTE_PORT
+EOF
+}
+
+if [[ "${1:-}" == '-h' || "${1:-}" == '--help' ]]; then
+	usage
+	exit 0
+fi
+
+SSH_USER="${1:-$SSH_USER}"
+SSH_HOST="${2:-$SSH_HOST}"
+LOCAL_PORT="${3:-$LOCAL_PORT}"
+REMOTE_PORT="${4:-$REMOTE_PORT}"
+
+valid_port() {
+	[[ "$1" =~ ^[0-9]+$ ]] && ((1 <= 10#$1 && 10#$1 <= 65535))
+}
+
+valid_port "$LOCAL_PORT" || {
+	printf 'Invalid local port: %s\n' "$LOCAL_PORT" >&2
+	exit 2
+}
+valid_port "$REMOTE_PORT" || {
+	printf 'Invalid remote port: %s\n' "$REMOTE_PORT" >&2
+	exit 2
+}
+
+cleanup() {
+	if [[ -n "$SSH_PID" ]] && kill -0 "$SSH_PID" 2>/dev/null; then
+		kill "$SSH_PID" 2>/dev/null || true
+	fi
+	if [[ -n "$SSH_PID" ]]; then
+		wait "$SSH_PID" 2>/dev/null || true
+	fi
+}
+trap cleanup EXIT
+
+printf 'Opening SSH tunnel: localhost:%s -> %s@%s:127.0.0.1:%s\n' \
+	"$LOCAL_PORT" "$SSH_USER" "$SSH_HOST" "$REMOTE_PORT"
+
+ssh -N \
+	-L "${LOCAL_PORT}:127.0.0.1:${REMOTE_PORT}" \
+	-o ExitOnForwardFailure=yes \
+	"$SSH_USER@$SSH_HOST" &
+SSH_PID=$!
+
+# ExitOnForwardFailure makes the SSH process a reliable readiness signal.
+if ! kill -0 "$SSH_PID" 2>/dev/null; then
+	wait "$SSH_PID"
+	exit 1
+fi
+
+printf 'Starting TigerVNC on 127.0.0.1:%s\n' "$LOCAL_PORT"
+vncviewer "127.0.0.1::${LOCAL_PORT}"
