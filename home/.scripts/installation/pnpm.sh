@@ -9,9 +9,13 @@ export PNPM_HOME
 if ! command -v pnpm >/dev/null 2>&1; then
 	info 'Installing pnpm.'
 	curl --fail --silent --show-error https://get.pnpm.io/install.sh | sh -
-	if [[ -x "$PNPM_HOME/pnpm" ]]; then
-		export PATH="$PNPM_HOME:$PATH"
-	fi
+	for pnpm_bin in "$PNPM_HOME/bin/pnpm" "$PNPM_HOME/pnpm"; do
+		if [[ -x "$pnpm_bin" ]]; then
+			pnpm_dir="$(dirname "$pnpm_bin")"
+			export PATH="$pnpm_dir:$PATH"
+			break
+		fi
+	done
 fi
 
 require_command pnpm

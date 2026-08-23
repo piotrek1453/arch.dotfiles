@@ -54,3 +54,12 @@ Some steps execute installers or update scripts downloaded from the network
 (GHCup, Fisher, pnpm and Arkenfox). Review that trust boundary before running
 `all`. The VS Code installer script was removed because VS Code is installed
 from the AUR package list.
+
+## Continuous integration
+
+GitHub Actions builds the Arch-based `Containerfile` on pushes and pull
+requests. The image performs the full dotfiles installation and runs all
+repository hooks during the build, so a broken installation or formatting
+configuration fails CI. Building the image includes compiling `paru` and
+installing the complete Arch package list, so the workflow is intentionally an
+integration test rather than a fast lint-only job.
