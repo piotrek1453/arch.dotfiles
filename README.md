@@ -48,7 +48,9 @@ The optional `system-config` target installs `system/etc/pacman.conf` and
 `system/etc/makepkg.conf` into `/etc` using `sudo`. It is not part of `all` and
 replaces the active system configuration, so inspect those files before running
 it. The Arch-based container test runs this target before the full installation
-to verify package builds with these settings.
+to verify package builds with these settings. Container-only environments can
+set `PACMAN_DISABLE_SANDBOX=1` when the runtime does not support pacman's
+Landlock sandbox.
 
 The `firefox` step updates the Arkenfox profile only when
 `$HOME/.mozilla/firefox/arkenfox` exists, and is intentionally not part of `all`
