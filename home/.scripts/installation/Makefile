@@ -3,7 +3,7 @@ SHELL := /usr/bin/bash
 INSTALLATION_DIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 REPO_ROOT := $(shell git -C "$(INSTALLATION_DIR)" rev-parse --show-toplevel)
 
-.PHONY: all help prerequisites submodules rust paru packages haskell stow fish pnpm hooks firefox
+.PHONY: all help prerequisites submodules rust paru packages haskell stow fish pnpm hooks system-config firefox
 
 all: prerequisites submodules rust paru packages haskell stow fish pnpm hooks
 
@@ -23,6 +23,7 @@ help:
 		'  fish           Install Fisher and the Tide theme' \
 		'  pnpm           Install pnpm and global packages' \
 		'  hooks          Install the pre-commit Git hook' \
+		'  system-config  Install pacman and makepkg config into /etc (optional)' \
 		'  firefox        Update the Arkenfox profile when present (optional)'
 
 prerequisites:
@@ -54,6 +55,9 @@ pnpm: stow
 
 hooks: packages
 	cd "$(REPO_ROOT)" && pre-commit install
+
+system-config: prerequisites
+	"$(INSTALLATION_DIR)/system-config.sh"
 
 firefox: stow
 	"$(INSTALLATION_DIR)/firefox.sh"

@@ -11,9 +11,12 @@ ENV LANG=C.UTF-8 \
 
 RUN pacman -Syu --noconfirm --needed \
         base-devel \
+        aria2 \
+        ccache \
         curl \
         git \
         make \
+        mold \
         rustup \
         sudo \
     && pacman -Scc --noconfirm
@@ -28,6 +31,7 @@ COPY --chown=${USERNAME}:${USERNAME} . /workspace
 USER ${USERNAME}
 
 RUN git config --global --add safe.directory /workspace \
+    && make -C home/.scripts/installation system-config \
     && make -C home/.scripts/installation all \
     && pre-commit run --all-files
 

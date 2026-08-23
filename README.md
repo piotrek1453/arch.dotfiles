@@ -18,6 +18,7 @@ make -C home/.scripts/installation packages
 make -C home/.scripts/installation stow
 make -C home/.scripts/installation pnpm
 make -C home/.scripts/installation hooks
+make -C home/.scripts/installation system-config
 make -C home/.scripts/installation firefox
 ```
 
@@ -42,6 +43,12 @@ detected and skipped where possible.
 The `hooks` target runs `pre-commit install` in the repository. Hook definitions
 are versioned in `.pre-commit-config.yaml`; the configured hooks remove trailing
 whitespace, ensure a final newline and format shell scripts with `shfmt`.
+
+The optional `system-config` target installs `system/etc/pacman.conf` and
+`system/etc/makepkg.conf` into `/etc` using `sudo`. It is not part of `all` and
+replaces the active system configuration, so inspect those files before running
+it. The Arch-based container test runs this target before the full installation
+to verify package builds with these settings.
 
 The `firefox` step updates the Arkenfox profile only when
 `$HOME/.mozilla/firefox/arkenfox` exists, and is intentionally not part of `all`
