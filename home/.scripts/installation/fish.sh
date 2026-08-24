@@ -7,8 +7,7 @@ require_command curl
 
 if ! fish -c 'type -q fisher'; then
 	info 'Installing Fisher.'
-	curl --fail --silent --show-error https://git.io/fisher |
-		fish -c 'source; fisher install jorgebucaran/fisher'
+	fish -c 'curl --fail --silent --show-error https://git.io/fisher | source; and fisher install jorgebucaran/fisher'
 else
 	skip 'Fisher is already installed.'
 fi

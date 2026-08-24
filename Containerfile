@@ -34,6 +34,6 @@ RUN git config --global --add safe.directory /workspace \
     && rm -f "/home/${USERNAME}/.bashrc" "/home/${USERNAME}/.bash_profile" "/home/${USERNAME}/.bash_logout" \
     && PACMAN_DISABLE_SANDBOX=1 make -C home/.scripts/installation system-config \
     && make -C home/.scripts/installation all \
-    && pre-commit run --all-files
+    && if git -C /workspace rev-parse --is-inside-work-tree >/dev/null 2>&1; then pre-commit run --all-files; else echo '[SKIP] pre-commit run skipped (no .git in /workspace).'; fi
 
 CMD ["bash"]

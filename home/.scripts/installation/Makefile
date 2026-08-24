@@ -1,7 +1,7 @@
 SHELL := /usr/bin/bash
 
 INSTALLATION_DIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
-REPO_ROOT := $(shell git -C "$(INSTALLATION_DIR)" rev-parse --show-toplevel)
+REPO_ROOT := $(shell git -C "$(INSTALLATION_DIR)" rev-parse --show-toplevel 2>/dev/null || realpath "$(INSTALLATION_DIR)/../../..")
 
 .PHONY: all help prerequisites submodules rust paru packages haskell stow fish pnpm hooks system-config firefox
 
@@ -54,7 +54,11 @@ pnpm: stow
 	"$(INSTALLATION_DIR)/pnpm.sh"
 
 hooks: packages
-	cd "$(REPO_ROOT)" && pre-commit install
+	@if git -C "$(REPO_ROOT)" rev-parse --is-inside-work-tree >/dev/null 2>&1; then \
+		cd "$(REPO_ROOT)" && pre-commit install; \
+	else \
+		printf '[SKIP] pre-commit install skipped (no .git in repository root).\n'; \
+	fi
 
 system-config: prerequisites
 	"$(INSTALLATION_DIR)/system-config.sh"

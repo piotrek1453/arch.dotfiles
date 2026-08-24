@@ -4,7 +4,12 @@ set -Eeuo pipefail
 
 SCRIPT_PATH="$(readlink -f "${BASH_SOURCE[0]}")"
 INSTALLATION_DIR="$(dirname "$SCRIPT_PATH")"
-REPO_ROOT="$(git -C "$INSTALLATION_DIR" rev-parse --show-toplevel)"
+if REPO_ROOT_FROM_GIT="$(git -C "$INSTALLATION_DIR" rev-parse --show-toplevel 2>/dev/null)"; then
+	REPO_ROOT="$REPO_ROOT_FROM_GIT"
+else
+	# Fallback for environments where .git is intentionally not copied (e.g. Docker build context).
+	REPO_ROOT="$(realpath "$INSTALLATION_DIR/../../..")"
+fi
 
 export INSTALLATION_DIR REPO_ROOT
 
