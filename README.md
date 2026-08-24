@@ -35,10 +35,10 @@ on the current working directory or on an exported `REPO_ROOT`.
 
 The installer currently requires Arch Linux, Git, `sudo`, network access and a
 checkout of this repository. It installs system packages with `paru`, builds the
-local `paru` package when needed, configures Rust nightly, GHCup/GHC/Cabal,
-Fish/Fisher/Tide and global pnpm packages, and links files from `home/` with GNU
-Stow. Re-running the targets is supported; already configured components are
-detected and skipped where possible.
+local `paru` package when needed, configures Rust nightly, GHCup/GHC/Cabal and
+global pnpm packages, and links files from `home/` with GNU Stow. Re-running the
+targets is supported; already configured components are detected and skipped
+where possible.
 
 The `hooks` target runs `pre-commit install` in the repository. Hook definitions
 are versioned in `.pre-commit-config.yaml`; the configured hooks remove trailing
@@ -60,7 +60,7 @@ when an unmanaged file already occupies a target path; resolve such conflicts
 before retrying.
 
 Some steps execute installers or update scripts downloaded from the network
-(GHCup, Fisher, pnpm and Arkenfox). Review that trust boundary before running
+(GHCup, pnpm and Arkenfox). Review that trust boundary before running
 `all`. The VS Code installer script was removed because VS Code is installed
 from the AUR package list.
 

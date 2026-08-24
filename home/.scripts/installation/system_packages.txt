@@ -2,7 +2,6 @@
 kitty
 
 # shell
-fish
 bash-completion
 starship
 
