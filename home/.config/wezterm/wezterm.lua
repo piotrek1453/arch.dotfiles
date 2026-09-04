@@ -1,5 +1,10 @@
 -- ~/.config/wezterm/wezterm.lua
 local wezterm = require("wezterm")
+-- start in maximized window
+wezterm.on("gui-startup", function(cmd)
+	local _, _, window = wezterm.mux.spawn_window(cmd or {})
+	window:gui_window():maximize()
+end)
 
 return {
 	-- Font settings
