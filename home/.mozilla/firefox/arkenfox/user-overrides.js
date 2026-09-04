@@ -67,3 +67,6 @@ user_pref("layout.css.prefers-color-scheme.content-override", "dark");
 
 // disable Firefox password manager
 user_pref("signon.rememberSignons", false);
+
+// don't override DNS
+user_pref("network.trr.mode", 5);

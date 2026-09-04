@@ -1,5 +1,5 @@
 # terminal emulator
-kitty
+wezterm
 
 # shell
 bash-completion
