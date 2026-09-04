@@ -70,3 +70,6 @@ user_pref("signon.rememberSignons", false);
 
 // don't override DNS
 user_pref("network.trr.mode", 5);
+
+// disable webrtc
+user_pref("media.peerconnection.enabled", false);
