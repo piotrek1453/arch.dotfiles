@@ -1,0 +1,6 @@
+[Unit]
+Description=Backup sync-poufne
+
+[Service]
+Type=oneshot
+ExecStart=%h/.scripts/backup-sync-poufne

@@ -3,9 +3,9 @@ SHELL := /usr/bin/bash
 INSTALLATION_DIR := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 REPO_ROOT := $(shell git -C "$(INSTALLATION_DIR)" rev-parse --show-toplevel 2>/dev/null || realpath "$(INSTALLATION_DIR)/../../..")
 
-.PHONY: all help prerequisites submodules rust paru packages haskell stow pnpm hooks system-config firefox
+.PHONY: all help prerequisites submodules rust paru packages haskell stow systemd pnpm hooks system-config firefox
 
-all: prerequisites submodules rust paru packages haskell stow pnpm hooks
+all: prerequisites submodules rust paru packages haskell stow systemd pnpm hooks
 
 help:
 	@printf '%s\n' \
@@ -20,6 +20,7 @@ help:
 		'  packages       Install packages from system_packages.txt' \
 		'  haskell        Install GHCup, GHC, and Cabal' \
 		'  stow           Link the dotfiles into HOME' \
+		'  systemd        Enable and start the configured user systemd units' \
 		'  pnpm           Install pnpm and global packages' \
 		'  hooks          Install the pre-commit Git hook' \
 		'  system-config  Install pacman and makepkg config into /etc (optional)' \
@@ -45,6 +46,9 @@ haskell: packages
 
 stow: packages
 	"$(INSTALLATION_DIR)/stow.sh"
+
+systemd: stow
+	"$(INSTALLATION_DIR)/systemd.sh"
 
 pnpm: stow
 	"$(INSTALLATION_DIR)/pnpm.sh"

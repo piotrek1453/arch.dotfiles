@@ -18,6 +18,7 @@ make -C home/.scripts/installation packages
 make -C home/.scripts/installation stow
 make -C home/.scripts/installation pnpm
 make -C home/.scripts/installation hooks
+make -C home/.scripts/installation systemd
 make -C home/.scripts/installation system-config
 make -C home/.scripts/installation firefox
 ```
@@ -43,6 +44,14 @@ where possible.
 The `hooks` target runs `pre-commit install` in the repository. Hook definitions
 are versioned in `.pre-commit-config.yaml`; the configured hooks remove trailing
 whitespace, ensure a final newline and format shell scripts with `shfmt`.
+
+The `systemd` target reloads the user systemd manager and enables and starts all
+timer and service units listed in `home/.scripts/installation/systemd.sh`. It
+is safe to run repeatedly. It requires an active `systemd --user` manager and
+the units linked into `$HOME` by the `stow` target. Add future unit names to the
+`USER_TIMERS` or `USER_SERVICES` list in that script. The Rust step installs the
+Cargo packages listed in `home/.scripts/installation/rust_packages.txt` when
+they are not already installed, so `lspmux.service` can be started automatically.
 
 The optional `system-config` target installs `system/etc/pacman.conf` and
 `system/etc/makepkg.conf` into `/etc` using `sudo`. It is not part of `all` and
