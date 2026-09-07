@@ -134,7 +134,6 @@ zstd
 lrzip
 lzop
 lz4
-plzip
 curl
 
 ## network
@@ -149,16 +148,16 @@ inetutils
 tailscale
 
 ## latex/tex extras
-tex-fmt-bin
-texlive-bibtexextra
-texlive-context
-texlive-formatsextra
-texlive-langpolish
-texlive-luatex
-texlive-mathscience
-texlive-metapost
-texlive-publishers
-texlive-xetex
+# tex-fmt-bin
+# texlive-bibtexextra
+# texlive-context
+# texlive-formatsextra
+# texlive-langpolish
+# texlive-luatex
+# texlive-mathscience
+# texlive-metapost
+# texlive-publishers
+# texlive-xetex
 
 # misc
 less
