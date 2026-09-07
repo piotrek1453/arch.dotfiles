@@ -14,6 +14,9 @@ return {
 	-- Scrollback buffer size
 	scrollback_lines = 10000,
 
+	-- Enable scroll bar
+	enable_scroll_bar = true,
+
 	-- Tab bar position and style
 	tab_bar_at_bottom = true,
 	use_fancy_tab_bar = true,
