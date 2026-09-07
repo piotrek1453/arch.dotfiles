@@ -20,6 +20,20 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install --yes podman
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
+
+      - name: Reclaim runner disk space
+        run: |
+          sudo rm -rf \
+            /usr/local/lib/android \
+            /usr/share/dotnet \
+            /opt/ghc \
+            /usr/local/share/powershell \
+            /opt/hostedtoolcache/CodeQL
+          docker system prune --all --force --volumes || true
+          podman system prune --all --force || true
+          df -h
 
       - name: Build and verify Arch container
-        run: podman build --tag dotfiles-config-test:ci --file Containerfile .
+        run: podman build --layers=false --tag dotfiles-config-test:ci --file Containerfile .
