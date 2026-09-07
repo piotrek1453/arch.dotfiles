@@ -9,18 +9,23 @@ ENV LANG=C.UTF-8 \
     PNPM_HOME=/home/${USERNAME}/.local/share/pnpm \
     PATH=/home/${USERNAME}/.local/share/pnpm/bin:/home/${USERNAME}/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin
 
-RUN pacman -Syu --noconfirm --needed \
-        base-devel \
-        aria2 \
-        ccache \
-        curl \
-        git \
-        make \
-        mold \
-        rustup \
-        sudo \
+RUN pacman -Sy --noconfirm reflector \
+    && reflector \
+    --latest 20 \
+    --protocol https \
+    --sort rate \
+    --save /etc/pacman.d/mirrorlist \
+    && pacman -Syu --noconfirm --needed \
+    base-devel \
+    aria2 \
+    ccache \
+    curl \
+    git \
+    make \
+    mold \
+    rustup \
+    sudo \
     && pacman -Scc --noconfirm
-
 RUN groupadd --gid "${USER_GID}" "${USERNAME}" \
     && useradd --uid "${USER_UID}" --gid "${USER_GID}" --create-home --shell /usr/bin/bash "${USERNAME}" \
     && printf '%s ALL=(ALL) NOPASSWD: ALL\n' "${USERNAME}" > /etc/sudoers.d/"${USERNAME}" \
